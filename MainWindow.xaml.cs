@@ -42,38 +42,33 @@ namespace Feistel
 
         private void Encrypt_Click(object sender, RoutedEventArgs e)
         {
-            string text = TextInp.Text;
             TextOutput.Text = "";
-
             try
             {
                 Logics.Instance.SetKey(KeyBox.Text);
+                TextOutput.Text = Logics.Instance.Encrypt(TextInp.Text, _rounds);
+                CipherInput.Text = TextOutput.Text;
+                CipherOutput.Text = "";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            TextOutput.Text = Logics.Instance.Encrypt(text, _rounds);
-            CipherInput.Text = TextOutput.Text;
-            CipherOutput.Text = "";
         }
 
         private void Decrypt_Click(object sender, RoutedEventArgs e)
         {
-            string cipher = CipherInput.Text;
             CipherOutput.Text = "";
-
             try
             {
                 Logics.Instance.SetKey(KeyBoxDecr.Text);
+                CipherOutput.Text = Logics.Instance.Decrypt(CipherInput.Text, _rounds);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            CipherOutput.Text = Logics.Instance.Decrypt(cipher, _rounds);
         }
 
         private void CreateKey_Click(object sender, RoutedEventArgs e)

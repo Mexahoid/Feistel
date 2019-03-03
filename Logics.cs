@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows.Markup.Localizer;
 
 namespace Feistel
 {
@@ -38,7 +37,6 @@ namespace Feistel
                 _key <<= 8;
                 _key += byteArray[i];
             }
-
             return _key;
         }
 

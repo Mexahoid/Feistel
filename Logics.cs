@@ -21,7 +21,7 @@ namespace Feistel
 
         public void SetKey(string skey)
         {
-            if (skey != _key.ToString() && ulong.TryParse(skey, out ulong key))
+            if (ulong.TryParse(skey, out ulong key))
                 _key = key;
             else
                 throw new Exception("Неверный формат ключа.");
